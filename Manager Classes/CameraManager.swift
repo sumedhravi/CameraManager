@@ -139,7 +139,7 @@ internal typealias ZoomExposureAndFocusHandling = CameraManager
 internal typealias OrientationHandling = CameraManager
 internal typealias CameraSetup = CameraManager
 
-final class CameraManager: NSObject {
+class CameraManager: NSObject {
     
     static let sharedInstance = CameraManager()
     
