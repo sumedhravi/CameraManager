@@ -262,8 +262,8 @@ class CameraManager: NSObject {
     
     // MARK: Externally modifiable properties.
     
-    open static var videoAlbumName: String = "Videos"
-    open static var imageAlbumName: String = "Images"
+    static var videoAlbumName: String = "Videos"
+    static var imageAlbumName: String = "Images"
     
     open var videoExportQuality: VideoExportQuality = .medium
     open var shouldKeepViewAtOrientationChanges = false
@@ -517,7 +517,6 @@ extension CameraSetup {
         if session.canAddInput(input), !session.inputs.contains(input) {
             session.addInput(input)
             captureDeviceInput = input
-            print("Session Output: \(session.outputs.first?.connections)")
         }
 
         previewLayer?.connection?.isVideoMirrored = cameraPosition == .front ? shouldFlipFrontCameraImage : false
@@ -1529,7 +1528,6 @@ extension CameraManager {
             var previewImage: UIImage?
             
             let originalImage = capturedImage.fixOrientation()
-            let imageData = UIImageJPEGRepresentation(originalImage, 1.0)
             
             if let previewBuffer = previewPhotoSampleBuffer, let imageBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(previewBuffer) {
                 let ciimage : CIImage = CIImage(cvPixelBuffer: imageBuffer)
